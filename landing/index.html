@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Context Search - 98% Fewer Tokens for AI Agents</title>
+    <meta name="description" content="Semantic code search for AI agents. Stop wasting millions of tokens on grep. Beta: $49/mo.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero .subtitle {
+            font-size: 24px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #fff;
+            color: #667eea;
+            padding: 18px 48px;
+            font-size: 20px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+        
+        .price {
+            margin-top: 20px;
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        /* Problem Section */
+        .section {
+            padding: 60px 20px;
+        }
+        
+        .section h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .problem-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+        
+        .problem-box h3 {
+            color: #856404;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        
+        .problem-box p {
+            color: #856404;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        /* Solution */
+        .solution-box {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+        
+        .solution-box h3 {
+            color: #0c5460;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        
+        .solution-box p {
+            color: #0c5460;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .feature {
+            padding: 30px;
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+        }
+        
+        .feature h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+        
+        .feature p {
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        /* Pricing */
+        .pricing {
+            background: #f8f9fa;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .pricing-card {
+            background: white;
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .pricing-card h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        
+        .pricing-card .price-tag {
+            font-size: 56px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .pricing-card .price-tag span {
+            font-size: 24px;
+            color: #666;
+        }
+        
+        .pricing-features {
+            text-align: left;
+            margin: 30px 0;
+            list-style: none;
+        }
+        
+        .pricing-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .pricing-features li:before {
+            content: "✓ ";
+            color: #28a745;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        /* Footer */
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero .subtitle {
+                font-size: 20px;
+            }
+            
+            .section h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>98% Fewer Tokens for AI Agents</h1>
+            <p class="subtitle">Semantic code search that stops your agents from wasting millions of tokens on grep</p>
+            <a href="#pricing" class="cta-button">Get Beta Access</a>
+            <p class="price">Beta: $49/month • Lifetime pricing lock</p>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section">
+        <div class="container">
+            <h2>The Problem</h2>
+            
+            <div class="problem-box">
+                <h3>AI Agents Waste Massive Tokens on Grep</h3>
+                <p>
+                    When Claude Code, Cursor, or your custom agent searches code with grep, 
+                    it returns megabytes of noise — comments, tests, variable names, everything.
+                </p>
+                <p style="margin-top: 15px;">
+                    <strong>Real example:</strong> <code>grep "payment processing"</code> → 
+                    <strong>5.9MB</strong> (1.4M tokens). Your agent reads it all. Your context window fills with garbage.
+                </p>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">5,700×</div>
+                    <div class="stat-label">More tokens with grep vs semantic search</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">$200-500</div>
+                    <div class="stat-label">Wasted per month on token costs</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Token reduction with Context Search</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="section" style="background: #f8f9fa;">
+        <div class="container">
+            <h2>The Solution</h2>
+            
+            <div class="solution-box">
+                <h3>Semantic Search Powered by Embeddings</h3>
+                <p>
+                    Context Search indexes your code with embeddings. When your agent searches,
+                    it gets exactly the right function/class — not megabytes of grep noise.
+                </p>
+                <p style="margin-top: 15px;">
+                    <strong>Same query, semantic search:</strong> <code>search("payment processing")</code> → 
+                    <strong>1KB</strong> (257 tokens). Precise, relevant results.
+                </p>
+            </div>
+
+            <div class="features">
+                <div class="feature">
+                    <h3>🎯 Precise Results</h3>
+                    <p>Finds the exact function/class your agent needs. No noise, no hallucinations.</p>
+                </div>
+                <div class="feature">
+                    <h3>⚡ Fast</h3>
+                    <p>Sub-second searches. Index once, search thousands of times.</p>
+                </div>
+                <div class="feature">
+                    <h3>💰 Saves Money</h3>
+                    <p>$0.00001 per search. Saves $200-500/month in wasted token costs.</p>
+                </div>
+                <div class="feature">
+                    <h3>🔌 API First</h3>
+                    <p>REST API. Works with Claude Code, Cursor, custom agents, anything.</p>
+                </div>
+                <div class="feature">
+                    <h3>🐍 Python Support</h3>
+                    <p>Python code today. JavaScript, TypeScript, Go coming soon.</p>
+                </div>
+                <div class="feature">
+                    <h3>🔒 Private</h3>
+                    <p>Your code stays yours. Embeddings only, not source code.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2>Beta Pricing</h2>
+            
+            <div class="pricing-card">
+                <span class="badge">EARLY ADOPTER</span>
+                <h3>Beta Access</h3>
+                <div class="price-tag">$49<span>/mo</span></div>
+                
+                <ul class="pricing-features">
+                    <li>1 repository (manual indexing)</li>
+                    <li>Up to 50K symbols</li>
+                    <li>100 searches per day</li>
+                    <li>REST API access</li>
+                    <li>Email support (&lt;24h response)</li>
+                    <li><strong>Lifetime price lock — $49 forever</strong></li>
+                </ul>
+                
+                <a href="https://buy.stripe.com/test_5kQbIU0NE1qc69xbSZ9MY00" class="cta-button" style="margin-top: 30px;">
+                    Start Beta Now
+                </a>
+                
+                <p style="margin-top: 20px; color: #666; font-size: 14px;">
+                    Limited to first 50 customers • Manual onboarding
+                </p>
+            </div>
+            
+            <p style="margin-top: 40px; font-size: 16px; color: #666;">
+                Beta means: I personally index your repo and support you directly.<br>
+                You get early access, influence the roadmap, and lifetime $49 pricing.
+            </p>
+        </div>
+    </section>
+
+    <!-- CTA Footer -->
+    <section class="section">
+        <div class="container" style="text-align: center;">
+            <h2 style="margin-bottom: 20px;">Ready to Stop Wasting Tokens?</h2>
+            <p style="font-size: 18px; margin-bottom: 40px; color: #666;">
+                Join the first 50 beta customers. Lifetime $49/mo pricing.
+            </p>
+            <a href="#pricing" class="cta-button">Get Beta Access</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Context Search. Built with 🔥 by <a href="#">Pollux</a></p>
+            <p style="margin-top: 10px; font-size: 14px;">
+                Questions? Email: <a href="mailto:hello@contextsearch.ai">hello@contextsearch.ai</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

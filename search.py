@@ -1,16 +1,19 @@
 """
 Semantic search over code symbols using cosine similarity.
 """
-import numpy as np
 from typing import List, Dict
-from embeddings import generate_embedding
+try:
+    from embeddings import generate_embedding
+except:
+    from embeddings_local import generate_embedding
 
 
 def cosine_similarity(a: List[float], b: List[float]) -> float:
-    """Compute cosine similarity between two vectors"""
-    a_np = np.array(a)
-    b_np = np.array(b)
-    return np.dot(a_np, b_np) / (np.linalg.norm(a_np) * np.linalg.norm(b_np))
+    """Compute cosine similarity between two vectors without numpy"""
+    dot_product = sum(x * y for x, y in zip(a, b))
+    norm_a = sum(x * x for x in a) ** 0.5
+    norm_b = sum(x * x for x in b) ** 0.5
+    return dot_product / (norm_a * norm_b) if (norm_a * norm_b) > 0 else 0.0
 
 
 def search_symbols(query: str, symbols: List[Dict], top_k: int = 5) -> List[Dict]:

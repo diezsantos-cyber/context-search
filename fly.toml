@@ -1,0 +1,21 @@
+# fly.toml app configuration file
+app = "context-search"
+primary_region = "mia"
+
+[build]
+
+[http_service]
+  internal_port = 10000
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "256mb"
+
+[env]
+  PORT = "10000"
+  API_KEYS = "beta-key-001,beta-key-002,beta-key-003"

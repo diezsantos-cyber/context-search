@@ -2,18 +2,14 @@
 AST Parser for extracting functions, classes, and methods from code.
 Supports Python, JavaScript, TypeScript initially.
 """
-import tree_sitter
-from tree_sitter import Language, Parser
-from pathlib import Path
 from typing import List, Dict
+import re
 
 
 class CodeParser:
     def __init__(self):
-        # TODO: Build tree-sitter languages
-        # For now, placeholder
-        self.python_parser = None
-        self.js_parser = None
+        # Using regex-based parser for MVP
+        pass
         
     def extract_symbols(self, code: str, language: str) -> List[Dict]:
         """
